@@ -22,7 +22,7 @@ app.use('/static', express.static('static'));
 app.post('/detector', (req, res) => res.send(req.body));
 app.get('*', (req, res) => res.sendFile(path.join(__dirname, 'static/index.html')));
 
-app.listen(3000, err => {
+app.listen(process.env.PORT, err => {
     if (err) {
         console.log(err); // eslint-disable-line
         return;
