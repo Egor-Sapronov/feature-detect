@@ -1,7 +1,7 @@
 const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
-const mongorito = require('mongorito');
+const database = require('./lib/database/database');
 const apiRouter = require('./lib/api/router');
 const app = express();
 
@@ -15,8 +15,8 @@ app.use('/static', express.static('static'));
 app.use('/api', apiRouter);
 app.get('*', (req, res) => res.sendFile(path.join(__dirname, 'static/index.html')));
 
-mongorito
-    .connect(process.env.MONGODB_URI)
+database
+    .connect()
     .then(() => {
         console.log('DB started'); // eslint-disable-line
 
