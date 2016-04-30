@@ -6,7 +6,7 @@ const apiRouter = require('./lib/api/router');
 const app = express();
 
 if (process.env.NODE_ENV === 'development') {
-    app.use(require('./devRouter'));
+    app.use(require('./devRouter')); // eslint-disable-line
 }
 
 app.use(bodyParser.urlencoded({ extended: false }));
