@@ -12,6 +12,9 @@
     "build": "webpack",
     "lint": "eslint src && eslint server.js"
   },
+  "pre-push": [
+    "lint"
+  ],
   "dependencies": {
     "babel-core": "^6.7.7",
     "babel-eslint": "^6.0.4",
@@ -29,11 +32,13 @@
     "express": "^4.13.4",
     "feature.js": "^1.0.0",
     "html-webpack-plugin": "^2.16.0",
+    "mongorito": "^2.0.0",
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
     "webpack": "^1.13.0"
   },
   "devDependencies": {
+    "pre-push": "^0.1.1",
     "webpack-dev-middleware": "^1.6.1",
     "webpack-hot-middleware": "^2.10.0"
   }
