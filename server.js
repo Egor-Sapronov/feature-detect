@@ -2,12 +2,11 @@ const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongorito = require('mongorito');
-const devRouter = require('./devRouter');
 const apiRouter = require('./lib/api/router');
 const app = express();
 
 if (process.env.NODE_ENV === 'development') {
-    app.use(devRouter);
+    app.use(require('./devRouter'));
 }
 
 app.use(bodyParser.urlencoded({ extended: false }));
