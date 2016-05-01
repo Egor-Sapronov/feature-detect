@@ -1,4 +1,4 @@
-import { Map, List } from 'immutable';
+import { Map, List, fromJS } from 'immutable';
 import { getStat, getAllStat } from '../effects/api';
 import { Effects, loop } from 'redux-loop';
 import { SELECT_KEY } from '../actions/search';
@@ -12,7 +12,7 @@ const initialState = loop(
 export default function search(state = initialState, action) {
     switch (action.type) {
         case FETCH_STAT_SUCCESS:
-            return state.set('currentStat', action.stat);
+            return state.set('currentStat', fromJS(action.stat));
         case FETCH_ALL_STAT_SUCCESS:
             return state.set('stats', List(action.stat));
         case SELECT_KEY:

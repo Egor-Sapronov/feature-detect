@@ -1,0 +1,16 @@
+.bar {
+    display: flex;
+    width: 160px;
+    height: 220px;
+    flex-direction: column;;
+}
+
+.isFeature {
+    background: #42A5F5;
+    flex-grow: 70;
+}
+
+.noFeature {
+    background: #F44336;
+    flex-grow: 30;
+}
