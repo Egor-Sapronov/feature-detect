@@ -16,3 +16,9 @@ export function getFeaturesKeys() {
         .then(checkStatus)
         .then(parseJSON);
 }
+
+export function getFeaturesStat(feature) {
+    return fetch(`${process.env.API_HOST}api/features/aggregate/${feature}`)
+        .then(checkStatus)
+        .then(parseJSON);
+}
