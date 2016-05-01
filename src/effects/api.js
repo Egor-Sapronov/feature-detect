@@ -1,11 +1,15 @@
-import { getFeaturesKeys, getFeaturesStat } from '../io/api';
+import * as api from '../io/api';
 import { fetchKeysSuccess } from '../actions/search';
-import { fetchStatSuccess } from '../actions/stat';
+import { fetchStatSuccess, fetchAllStatSuccess } from '../actions/stat';
 
-export function getKeys() {
-    return getFeaturesKeys().then(fetchKeysSuccess);
+export function getFeatures() {
+    return api.getFeaturesKeys().then(fetchKeysSuccess);
 }
 
 export function getStat(feature) {
-    return getFeaturesStat(feature).then(fetchStatSuccess);
+    return api.getFeaturesStat(feature).then(fetchStatSuccess);
+}
+
+export function getAllStat() {
+    return api.getStat().then(fetchAllStatSuccess);
 }

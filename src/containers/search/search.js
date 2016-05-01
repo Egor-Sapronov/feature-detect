@@ -10,21 +10,21 @@ export function shouldItemRender(key, inputValue) {
 
 export class Search extends Component {
     static propTypes = {
-        keys: PropTypes.array,
+        features: PropTypes.array,
         handleSelectKey: PropTypes.func.isRequired,
-        selectedKey: PropTypes.string,
+        selectedFeature: PropTypes.string,
     };
 
     static defaultProps = {
-        keys: [],
-        selectedKey: '',
+        features: [],
+        selectedFeature: '',
     }
 
     render() {
         return (
             <Autocomplete
-              items={ this.props.keys }
-              value={ this.props.selectedKey }
+              items={ this.props.features }
+              value={ this.props.selectedFeature }
               shouldItemRender={ shouldItemRender }
               getItemValue={ item => item }
               onSelect={ this.props.handleSelectKey }

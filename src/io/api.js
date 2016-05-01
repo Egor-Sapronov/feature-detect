@@ -11,6 +11,12 @@ function parseJSON(response) {
     return response.json();
 }
 
+export function getStat() {
+    return fetch(`${process.env.API_HOST}api/features/stats`)
+        .then(checkStatus)
+        .then(parseJSON);
+}
+
 export function getFeaturesKeys() {
     return fetch(`${process.env.API_HOST}api/features/keys`)
         .then(checkStatus)
@@ -18,7 +24,7 @@ export function getFeaturesKeys() {
 }
 
 export function getFeaturesStat(feature) {
-    return fetch(`${process.env.API_HOST}api/features/aggregate/${feature}`)
+    return fetch(`${process.env.API_HOST}api/features/stats/${feature}`)
         .then(checkStatus)
         .then(parseJSON);
 }
