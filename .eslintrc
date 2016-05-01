@@ -8,6 +8,9 @@
   "rules": {
     "indent": [2, 4, {
       "SwitchCase": 1
-    }]
+    }],
+    "react/jsx-indent": [2, 4],
+    "react/jsx-curly-spacing": [2, "always"],
+    "new-cap": [2, {"capIsNewExceptions": ["Map", "List"]}]
   }
 }
