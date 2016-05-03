@@ -27,6 +27,11 @@ module.exports = {
             },
         }),
         new HtmlWebpackPlugin({
+            filename: 'landing.html',
+            template: './src/landing/index.html',
+            chunks: [],
+        }),
+        new HtmlWebpackPlugin({
             filename: 'index.html',
             template: './src/index.html',
             chunks: ['index', 'detector'],

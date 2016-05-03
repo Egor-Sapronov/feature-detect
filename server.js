@@ -2,7 +2,8 @@ const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const database = require('./lib/database/database');
-const apiRouter = require('./lib/api/router');
+const apiRouter = require('./lib/router/api');
+const authRouter = require('./lib/router/auth');
 const app = express();
 
 if (process.env.NODE_ENV === 'development') {
@@ -13,7 +14,17 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use('/static', express.static('static'));
 app.use('/api', apiRouter);
-app.get('*', (req, res) => res.sendFile(path.join(__dirname, 'static/index.html')));
+app.use('/', authRouter);
+
+app.get('/home', (req, res) => res.sendFile(path.join(__dirname, 'static/landing.html')));
+
+app.get('*', (req, res) => {
+    if (req.isAuthenticated()) {
+        return res.sendFile(path.join(__dirname, 'static/index.html'));
+    }
+
+    return res.redirect('/home');
+});
 
 database
     .connect()
