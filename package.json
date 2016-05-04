@@ -45,6 +45,7 @@
     "mongorito": "^2.0.0",
     "passport": "^0.3.2",
     "passport-google-oauth2": "^0.1.6",
+    "passport-http-bearer": "^1.0.1",
     "react": "^15.0.2",
     "react-autocomplete": "git://github.com/Egor-Sapronov/react-autocomplete.git#25b9654",
     "react-dom": "^15.0.2",
@@ -55,6 +56,7 @@
     "redux-thunk": "^2.0.1",
     "reselect": "^2.5.1",
     "style-loader": "^0.13.1",
+    "swig": "^1.4.2",
     "webpack": "^1.13.0"
   },
   "devDependencies": {

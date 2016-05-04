@@ -11,20 +11,32 @@ function parseJSON(response) {
     return response.json();
 }
 
-export function getStat() {
-    return fetch(`${process.env.API_HOST}api/features/stats`)
-        .then(checkStatus)
-        .then(parseJSON);
+export function getStat(token) {
+    return fetch(`${process.env.API_HOST}api/features/stats`, {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    })
+    .then(checkStatus)
+    .then(parseJSON);
 }
 
-export function getFeaturesKeys() {
-    return fetch(`${process.env.API_HOST}api/features/keys`)
-        .then(checkStatus)
-        .then(parseJSON);
+export function getFeaturesKeys(token) {
+    return fetch(`${process.env.API_HOST}api/features/keys`, {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    })
+    .then(checkStatus)
+    .then(parseJSON);
 }
 
-export function getFeaturesStat(feature) {
-    return fetch(`${process.env.API_HOST}api/features/stats/${feature}`)
-        .then(checkStatus)
-        .then(parseJSON);
+export function getFeaturesStat(token, feature) {
+    return fetch(`${process.env.API_HOST}api/features/stats/${feature}`, {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    })
+    .then(checkStatus)
+    .then(parseJSON);
 }

@@ -21,6 +21,7 @@ export class App extends Component { // eslint-disable-line
         return (
             <div>
                 <Search />
+                <a href="/logout">Logout</a>
                 { !this.props.isCurrentStat && <StatLine stats={ this.props.calculatedStats } /> }
                 { this.props.isCurrentStat && <StatBar
                   top={ this.props.currentStat.top }

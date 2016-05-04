@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const database = require('./lib/database/database');
 const apiRouter = require('./lib/router/api');
 const authRouter = require('./lib/router/auth');
+const swig = require('swig');
 const app = express();
 
 if (process.env.NODE_ENV === 'development') {
@@ -20,7 +21,9 @@ app.get('/home', (req, res) => res.sendFile(path.join(__dirname, 'static/landing
 
 app.get('*', (req, res) => {
     if (req.isAuthenticated()) {
-        return res.sendFile(path.join(__dirname, 'static/index.html'));
+        return res.send(swig.renderFile(path.join(__dirname, 'static/index.html'), {
+            token: req.user.attributes.token,
+        }));
     }
 
     return res.redirect('/home');

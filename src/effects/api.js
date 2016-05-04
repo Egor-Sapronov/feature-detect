@@ -2,14 +2,14 @@ import * as api from '../io/api';
 import { fetchKeysSuccess } from '../actions/search';
 import { fetchStatSuccess, fetchAllStatSuccess } from '../actions/stat';
 
-export function getFeatures() {
-    return api.getFeaturesKeys().then(fetchKeysSuccess);
+export function getFeatures(token) {
+    return api.getFeaturesKeys(token).then(fetchKeysSuccess);
 }
 
-export function getStat(feature) {
+export function getStat(token, feature) {
     return api.getFeaturesStat(feature).then(fetchStatSuccess);
 }
 
-export function getAllStat() {
-    return api.getStat().then(fetchAllStatSuccess);
+export function getAllStat(token) {
+    return api.getStat(token).then(fetchAllStatSuccess);
 }
