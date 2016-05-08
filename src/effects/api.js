@@ -7,7 +7,7 @@ export function getFeatures(token) {
 }
 
 export function getStat(token, feature) {
-    return api.getFeaturesStat(feature).then(fetchStatSuccess);
+    return api.getFeaturesStat(token, feature).then(fetchStatSuccess);
 }
 
 export function getAllStat(token) {
