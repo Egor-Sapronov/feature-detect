@@ -6,6 +6,7 @@ module.exports = {
     devtool: 'cheap-module-eval-source-map',
     entry: {
         index: ['webpack-hot-middleware/client', './src/index'],
+        angular: './src/angular/index',
         detector: './src/detector',
     },
     output: {
@@ -21,6 +22,11 @@ module.exports = {
                 NODE_ENV: JSON.stringify(process.env.NODE_ENV),
                 API_HOST: JSON.stringify(process.env.API_HOST),
             },
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'angular.html',
+            template: './src/angular/index.html',
+            chunks: ['angular'],
         }),
         new HtmlWebpackPlugin({
             filename: 'landing.html',

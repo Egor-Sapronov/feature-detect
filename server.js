@@ -17,6 +17,16 @@ app.use('/static', express.static('static'));
 app.use('/api', apiRouter);
 app.use('/', authRouter);
 
+app.get('/angular', (req, res) => {
+    if (req.isAuthenticated()) {
+        return res.send(swig.renderFile(path.join(__dirname, 'static/angular.html'), {
+            token: req.user.attributes.token,
+        }));
+    }
+
+    return res.redirect('/home');
+});
+
 app.get('/home', (req, res) => res.sendFile(path.join(__dirname, 'static/landing.html')));
 
 app.get('*', (req, res) => {
