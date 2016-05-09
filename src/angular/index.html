@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Feature detect</title>
+    <style type="text/css">
+        .statBar__bar {
+            display: flex;
+            width: 160px;
+            height: 220px;
+            flex-direction: column;;
+        }
+
+        .statBar__isFeature {
+            background: #42A5F5;
+            flex-grow: 70;
+        }
+
+        .statBar__noFeature {
+            background: #F44336;
+            flex-grow: 30;
+        }
+
+        .statLine__line {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+    </style>
+  </head>
+  <body ng-app="feature">
+      <div ng-controller="featuresController as vm">
+          <select
+            ng-model="vm.selectedItem"
+            ng-options="item for item in vm.features"
+            ng-change="vm.onSelect()"
+          >
+
+          </select>
+
+          <div ng-if="vm.isCurrentStat">
+              <div class="statBar__bar">
+                  <div
+                    ng-if="vm.currentStat.top > 0"
+                    class="statBar__isFeature"
+                    style="flex-grow: {% raw %}{{vm.currentStat.top}}{% endraw %}">{% raw %}{{vm.currentStat.top}}{% endraw %}</div>
+                  <div
+                    ng-if="vm.currentStat.bottom > 0"
+                    class="statBar__noFeature"
+                    style="flex-grow: {% raw %}{{vm.currentStat.bottom}}{% endraw %}">{% raw %}{{vm.currentStat.bottom}}{% endraw %}</div>
+              </div>
+          </div>
+
+          <div ng-if="!vm.isCurrentStat" class="statLine__line">
+              <div ng-repeat="stat in vm.calculatedStats">
+                  <p>{% raw %}{{stat._id}}{% endraw %}</p>
+                  <div class="statBar__bar">
+                      <div
+                        ng-if="stat.top > 0"
+                        class="statBar__isFeature"
+                        style="flex-grow: {% raw %}{{stat.top}}{% endraw %}">{% raw %}{{stat.top}}{% endraw %}</div>
+                      <div
+                        ng-if="stat.bottom > 0"
+                        class="statBar__noFeature"
+                        style="flex-grow: {% raw %}{{stat.bottom}}{% endraw %}">{% raw %}{{stat.bottom}}{% endraw %}</div>
+                  </div>
+              </div>
+          </div>
+     </div>
+    <script>var API_TOKEN = '{{token}}'</script>
+  </body>
+</html>
