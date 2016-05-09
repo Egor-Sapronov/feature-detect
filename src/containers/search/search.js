@@ -5,7 +5,7 @@ import { selectKey } from '../../actions/search';
 import select from './select';
 
 export function shouldItemRender(key, inputValue) {
-    return key.toLowerCase().indexOf(inputValue.toLowerCase()) !== -1;
+    return key.toLowerCase().includes(inputValue.toLowerCase());
 }
 
 export class Search extends Component {
@@ -20,6 +20,12 @@ export class Search extends Component {
         selectedFeature: '',
     }
 
+    constructor(props) {
+        super(props);
+
+        this.handleInput = (event, value) => props.handleSelectKey(value);
+    }
+
     render() {
         return (
             <Autocomplete
@@ -27,6 +33,7 @@ export class Search extends Component {
               value={ this.props.selectedFeature }
               shouldItemRender={ shouldItemRender }
               getItemValue={ item => item }
+              onChange={ this.handleInput }
               onSelect={ this.props.handleSelectKey }
               renderItem={ (item) => <div key={ item }>{ item }</div> }
             />

@@ -30,13 +30,3 @@ export function getFeaturesKeys(token) {
     .then(checkStatus)
     .then(parseJSON);
 }
-
-export function getFeaturesStat(token, feature) {
-    return fetch(`${process.env.API_HOST}api/features/stats/${feature}`, {
-        headers: {
-            Authorization: `Bearer ${token}`,
-        },
-    })
-    .then(checkStatus)
-    .then(parseJSON);
-}
