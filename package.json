@@ -10,6 +10,7 @@
     "start": "node server.js",
     "postinstall": "npm run build",
     "build": "webpack",
+    "build:elm": "elm-make src/elm/app.elm --output=static/elm.html",
     "lint": "eslint src && eslint server.js"
   },
   "pre-push": [

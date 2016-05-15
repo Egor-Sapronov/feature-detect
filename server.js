@@ -19,6 +19,8 @@ app.use('/', authRouter);
 
 app.get('/home', (req, res) => res.sendFile(path.join(__dirname, 'static/landing.html')));
 
+app.get('/elm', (req, res) => res.sendFile(path.join(__dirname, 'static/elm.html')));
+
 app.get('*', (req, res) => {
     if (req.isAuthenticated()) {
         return res.send(swig.renderFile(path.join(__dirname, 'static/index.html'), {
