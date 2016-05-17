@@ -6,6 +6,7 @@ module.exports = {
     devtool: 'source-map',
     entry: {
         index: './src/index',
+        elm: './src/elm/index',
         detector: './src/detector',
     },
     output: {
@@ -27,6 +28,11 @@ module.exports = {
             },
         }),
         new HtmlWebpackPlugin({
+            filename: 'elm.html',
+            template: './src/elm/index.html',
+            chunks: ['elm'],
+        }),
+        new HtmlWebpackPlugin({
             filename: 'landing.html',
             template: './src/landing/index.html',
             chunks: [],
@@ -45,6 +51,10 @@ module.exports = {
         }, {
             test: /\.css$/,
             loader: 'style!css?modules&importLoaders=1&localIdentName=[name]__[local]',
+        }, {
+            test: /\.elm$/,
+            exclude: [/elm-stuff/, /node_modules/],
+            loader: 'elm-webpack',
         }],
     },
 };
